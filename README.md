@@ -1,0 +1,1 @@
+This project is a redo of my company's website, without Bootstrap.
