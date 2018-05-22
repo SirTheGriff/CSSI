@@ -15,6 +15,8 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+
+
 /* Sections
    ========================================================================== */
 
@@ -30,14 +32,14 @@ body {
  * Add the correct display in IE 9-.
  */
 
-article,
-aside,
-footer,
-header,
-nav,
-section {
-  display: block;
-}
+/*article,*/
+/*aside,*/
+/*footer,*/
+/*header,*/
+/*nav,*/
+/*section {*/
+  /*display: block;*/
+/*}*/
 
 /**
  * Correct the font size and margin on `h1` elements within `section` and
