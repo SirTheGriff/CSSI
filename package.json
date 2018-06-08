@@ -1,0 +1,26 @@
+{
+  "name": "cssi",
+  "version": "1.0.0",
+  "description": "FSJS Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirTheGriff/CSSI.git"
+  },
+  "author": "Justin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirTheGriff/CSSI/issues"
+  },
+  "homepage": "https://github.com/SirTheGriff/CSSI#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.1.4"
+  }
+}
