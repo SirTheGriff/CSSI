@@ -17,13 +17,34 @@ app.use(bodyParser.json());
 //RESTFUL ROUTES
 
 app.get('/', function(req, res) {
-   res.redirect("/home");
+   res.render("index");
 });
 
 //INDEX ROUTE
 
-app.get('/home', function(req, res) {
-    res.render('index');
+
+app.get('/aboutus', function(req, res) {
+    res.render('aboutus');
+});
+
+app.get('/contactus', function(req, res) {
+    res.render('contactus');
+});
+
+app.get('/downloads', function(req, res) {
+    res.render('downloads');
+});
+
+app.get('/register', function(req, res) {
+    res.render('register');
+});
+
+app.get('/services', function(req, res) {
+    res.render('services');
+});
+
+app.get('/whitepapers', function(req, res) {
+    res.render('whitepapers');
 });
 
 
