@@ -97,12 +97,13 @@
     <fieldset class="all_forms">
         <legend>Additional Information</legend>
         <label for="system">Portfolio Management System:</label><br>
-        <input type="radio" id="system" name="system" value="axys"> Axys<br>
-        <input type="radio" id="system" name="system" value="apx"> APX<br>
-        <input type="radio" id="system" name="system" value="pc"> Schwab Portfolio Center<br>
-        <input type="radio" id="system" name="system" value=""> Other:<input type="text" name="other_reason"><br>
+        <input type="radio" class="system" name="system" value="axys"> Axys<br>
+        <input type="radio" class="system" name="system" value="apx"> APX<br>
+        <input type="radio" class="system" name="system" value="pc"> Schwab Portfolio Center<br>
+        <input type="radio" class="system" name="system" value=""> Other:<input type="text" name="other"><br>
     </fieldset>
 
+    <button type="submit">Submit Form</button>
 </form>
 
 <% include ./partials/footer %>
