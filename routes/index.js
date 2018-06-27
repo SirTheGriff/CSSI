@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const customer = require("../models/index");
+const customerProfile = require("../models/index");
+const passport = require("passport");
 
 
-//RESTFUL ROUTES
+//RESTFUL ROUTES - Index/Home
 
 router.get('/', function(req, res) {
     res.render("index");
 });
 
-//INDEX ROUTE
+//All Page routes
 
 
 router.get('/aboutus', function(req, res) {
@@ -37,20 +38,35 @@ router.get('/whitepapers', function(req, res) {
 });
 
 
-//NEW ROUTE
+//CREATE ROUTE - Register Route
 
 router.post('/register', function(req, res) {
-    res.json(req.body);
+    customerProfile.create(req.body, function(err, newProfile) {
+        if(err) {
+            console.log(err)
+        } else {
+            res.render("loggedin");
+        }
+    });
 });
 
 
-//CREATE ROUTE
+//SHOW ROUTE & Login Logic - need to use logged in middlewhare to pull entire profile
 
+router.get("/loggedin", function(req, res) {
+   customerProfile.findById(req.params.id, function(err, foundProfile){
+       if(err) {
+           res.redirect('downloads')
+       } else {
+           res.render("loggedin", {foundProfile: foundProfile});
+       }
+   });
+});
 
-
-//SHOW ROUTE
-
-
+router.post("/downloads",
+    passport.authenticate('local', { successRedirect: '/loggedin',
+    failureRedirect: '/downloads'})
+);
 
 //EDIT ROUTE
 
