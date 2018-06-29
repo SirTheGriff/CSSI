@@ -59,10 +59,12 @@ router.post('/register', function(req, res) {
 // );
 
 
+// need to fix navbar routes when clicking out...sessions needed likely
+
 router.get("/loggedin/:id", function(req, res) {
    customerProfile.findById(req.params.id, function(err, user){
        if(err) {
-           res.redirect("downloads");
+           res.redirect("../downloads");
        } else {
            res.render("loggedin", {
                title: 'Profile',
