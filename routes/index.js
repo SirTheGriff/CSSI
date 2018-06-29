@@ -51,22 +51,42 @@ router.post('/register', function(req, res) {
 });
 
 
-//SHOW ROUTE & Login Logic - need to use logged in middlewhare to pull entire profile
+//SHOW ROUTE & Login Logic - need to use logged in middleware to pull entire profile
+//
+// router.post("/downloads",
+//     passport.authenticate('local', { successRedirect: '/loggedin',
+//     failureRedirect: '/downloads'})
+// );
 
-router.get("/loggedin", function(req, res) {
-   customerProfile.findById(req.params.id, function(err, foundProfile){
+
+router.get("/loggedin/:id", function(req, res) {
+   customerProfile.findById(req.params.id, function(err, user){
        if(err) {
-           res.redirect('downloads')
+           res.redirect("downloads");
        } else {
-           res.render("loggedin", {foundProfile: foundProfile});
+           res.render("loggedin", {
+               title: 'Profile',
+               user: {
+                   companyname: user.companyname,
+                   address: user.address,
+                   city: user.city,
+                   state: user.state,
+                   country: user.country,
+                   firstname: user.firstname,
+                   lastname: user.lastname,
+                   title: user.title,
+                   phone: user.phone,
+                   email: user.email,
+                   website: user.website,
+                   system: user.system,
+                   created: user.created,
+               },
+           });
        }
    });
 });
 
-router.post("/downloads",
-    passport.authenticate('local', { successRedirect: '/loggedin',
-    failureRedirect: '/downloads'})
-);
+
 
 //EDIT ROUTE
 
