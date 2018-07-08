@@ -37,34 +37,46 @@ router.get('/whitepapers', function(req, res) {
     res.render('whitepapers');
 });
 
+router.get('/loggedin', function(req, res) {
+    res.render('loggedin');
+});
+
 
 //CREATE ROUTE - Register Route
 
 router.post('/register', function(req, res) {
-    customerProfile.create(req.body, function(err, newProfile) {
+    customerProfile.create(req.body, function(err, user) {
         if(err) {
             console.log(err)
         } else {
-            res.render("loggedin");
+          res.render("loggedin", {
+               title: 'Profile',
+               user: {
+                   companyname: user.companyname,
+                   address: user.address,
+                   city: user.city,
+                   state: user.state,
+                   country: user.country,
+                   firstname: user.firstname,
+                   lastname: user.lastname,
+                   title: user.title,
+                   phone: user.phone,
+                   email: user.email,
+                   website: user.website,
+                   system: user.system,
+                   created: user.created,
+               },
+          });
         }
     });
 });
 
 
-//SHOW ROUTE & Login Logic - need to use logged in middleware to pull entire profile
-//
-// router.post("/downloads",
-//     passport.authenticate('local', { successRedirect: '/loggedin',
-//     failureRedirect: '/downloads'})
-// );
-
-
-// need to fix navbar routes when clicking out...sessions needed likely
-
-router.get("/loggedin/:id", function(req, res) {
+router.get("/register/:id", function(req, res) {
    customerProfile.findById(req.params.id, function(err, user){
        if(err) {
            res.redirect("../downloads");
+           console.log(err);
        } else {
            res.render("loggedin", {
                title: 'Profile',
@@ -88,12 +100,46 @@ router.get("/loggedin/:id", function(req, res) {
    });
 });
 
+//SHOW ROUTE & Login Logic - need to use logged in middleware to pull entire profile
+//
+// router.post("/downloads",
+//     passport.authenticate('local', { successRedirect: '/loggedin',
+//     failureRedirect: '/downloads'})
+// );
 
 
-//EDIT ROUTE
+// need to fix navbar routes when clicking out...sessions needed likely
+//EDIT-UPDATE ROUTE
+
+router.get("/profile/:id", function(req, res) {
+   customerProfile.findById(req.params.id, function(err, user){
+       if(err) {
+           res.redirect("../downloads");
+           console.log(err);
+       } else {
+           res.render("profile", {
+               title: 'Profile',
+               user: {
+                   companyname: user.companyname,
+                   address: user.address,
+                   city: user.city,
+                   state: user.state,
+                   country: user.country,
+                   firstname: user.firstname,
+                   lastname: user.lastname,
+                   title: user.title,
+                   phone: user.phone,
+                   email: user.email,
+                   website: user.website,
+                   system: user.system,
+                   created: user.created,
+               },
+           });
+       }
+   });
+});
 
 
-//UPDATE ROUTE
 
 
 

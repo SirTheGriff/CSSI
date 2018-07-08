@@ -43,6 +43,6 @@ passport.use(new LocalStrategy(
 //     next();
 // });
 
-app.listen(2424, function() {
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log("server is runnin");
 });
