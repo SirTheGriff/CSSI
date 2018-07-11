@@ -15,6 +15,7 @@
 <div><%= user.companyname %></div>
 <div><%= user.title %></div>
 <div><%= user.address %></div>
+<div><%= user.zip %></div>
 <div><%= user.city %></div>
 <div><%= user.state %></div>
 <div><%= user.country %></div>
@@ -23,7 +24,7 @@
 <div><%= user.website %></div>
 <div><%= user.system %></div>
 <div><%= user.created %></div>
-<button value="edit" onclick="window.location.href='../profile/:id'">Edit</button>
+<button value="edit" onclick="window.location.href='../profile/<%= user._id %>' ">Edit</button>
 <button>Delete</button>
 <div>
 

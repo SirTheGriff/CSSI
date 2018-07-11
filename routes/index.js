@@ -56,6 +56,7 @@ router.post('/register', function(req, res) {
                    address: user.address,
                    city: user.city,
                    state: user.state,
+                   zip: user.zip,
                    country: user.country,
                    firstname: user.firstname,
                    lastname: user.lastname,
@@ -71,6 +72,7 @@ router.post('/register', function(req, res) {
     });
 });
 
+// SHOW ROUTE
 
 router.get("/register/:id", function(req, res) {
    customerProfile.findById(req.params.id, function(err, user){
@@ -85,6 +87,7 @@ router.get("/register/:id", function(req, res) {
                    address: user.address,
                    city: user.city,
                    state: user.state,
+                   zip: user.zip,
                    country: user.country,
                    firstname: user.firstname,
                    lastname: user.lastname,
@@ -100,7 +103,7 @@ router.get("/register/:id", function(req, res) {
    });
 });
 
-//SHOW ROUTE & Login Logic - need to use logged in middleware to pull entire profile
+//Login Logic - need to use logged in middleware to pull entire profile
 //
 // router.post("/downloads",
 //     passport.authenticate('local', { successRedirect: '/loggedin',
@@ -124,6 +127,7 @@ router.get("/profile/:id", function(req, res) {
                    address: user.address,
                    city: user.city,
                    state: user.state,
+                   zip: user.zip,
                    country: user.country,
                    firstname: user.firstname,
                    lastname: user.lastname,
@@ -137,6 +141,17 @@ router.get("/profile/:id", function(req, res) {
            });
        }
    });
+});
+
+router.put("/profile/:id", function(req, res) {
+   customerProfile.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
+       if(err) {
+           res.redirect("/profile/:id");
+           console.log(err);
+       } else {
+           res.redirect("/loggedin/" + req.params.id);
+       }
+   })
 });
 
 

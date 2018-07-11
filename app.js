@@ -4,7 +4,8 @@ const express = require('express'),
       app = express(),
       passport = require("passport"),
       LocalStrategy = require("passport-local").Strategy,
-      User = require("./models/user");
+      User = require("./models/user"),
+      methodOverride = require("method-override");
 
 const routes = require('./routes');
 
@@ -15,6 +16,7 @@ mongoose.connect("mongodb://localhost/cssi");
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.static('views'));
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use('/', routes);
@@ -43,6 +45,6 @@ passport.use(new LocalStrategy(
 //     next();
 // });
 
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(2424, function() {
     console.log("server is runnin");
 });

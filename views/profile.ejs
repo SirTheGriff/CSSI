@@ -1,26 +1,20 @@
 <% include ./partials/header %>
 
 
-<h1 class="heading">Update Profile</h1>
+<h1 class="heading"><%= user.firstname %> you can update your profile below</h1>
 
-<form action="/register" method="POST">
-    <fieldset class="all_forms">
-        <label for="username">User ID:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
-    </fieldset>
+<form action="/profile/<%= user._id %>?_method=PUT" method="POST">
 
     <fieldset class="all_forms">
         <label for="companyname">Company Name:</label><br>
-        <input type="text" id="companyname" name="companyname" required><br>
+        <input type="text" id="companyname" name="companyname" value"<%= user.companyname %>" required><br>
         <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" required><br>
+        <input type="text" id="address" name="address" value="<%= user.address %>" required><br>
         <label for="city">City:</label><br>
-        <input type="text" id="city" name="city" required><br>
+        <input type="text" id="city" name="city" value="<%= user.city %>" required><br>
         <label for="state">State:</label><br>
         <select name="state" id="state">
-            <option value="" selected="selected">Select a State</option>
+            <option value="" selected="selected"><%= user.state %></option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -74,24 +68,24 @@
             <option value="WY">Wyoming</option>
         </select><br>
         <label for="zip">Zip:</label><br>
-        <input type="text" id="zip" name="zip" required><br>
+        <input type="text" id="zip" name="zip" value="<%= user.zip %>" required><br>
         <label for="country">Country:</label><br>
-        <input type="text" id="country" name="country"><br>
+        <input type="text" id="country" name="country" value="<%= user.country %>"><br>
     </fieldset>
 
     <fieldset class="all_forms">
         <label for="firstname">First Name:</label><br>
-        <input type="text" id="firstname" name="firstname" required><br>
+        <input type="text" id="firstname" name="firstname" value="<%= user.firstname %>" required><br>
         <label for="lastname">Last Name:</label><br>
-        <input type="text" id="lastname" name="lastname" required><br>
+        <input type="text" id="lastname" name="lastname" value="<%= user.lastname %>" required><br>
         <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title"><br>
+        <input type="text" id="title" name="title" value="<%= user.title %>"><br>
         <label for="phone">Phone Number:</label><br>
-        <input type="tel" id="phone" name="phone"><br>
+        <input type="tel" id="phone" name="phone" value="<%= user.phone %>"><br>
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
+        <input type="email" id="email" name="email" value="<%= user.email %>"><br>
         <label for="website">Website:</label><br>
-        <input type="url" id="website" name="website"><br>
+        <input type="url" id="website" name="website" value="<%= user.website %>"><br>
     </fieldset>
 
     <fieldset class="all_forms">
@@ -103,7 +97,8 @@
         <input type="radio" class="system" name="system" value=""> Other:<input type="text" name="other"><br>
     </fieldset>
 
-    <button type="submit">Submit Form</button>
+    <h3>Click below to update changes</h3>
+    <button type="submit">Update Changes</button>
 </form>
 
 <% include ./partials/footer %>
