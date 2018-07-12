@@ -52,6 +52,7 @@ router.post('/register', function(req, res) {
           res.render("loggedin", {
                title: 'Profile',
                user: {
+                   userid: user._id,
                    companyname: user.companyname,
                    address: user.address,
                    city: user.city,
