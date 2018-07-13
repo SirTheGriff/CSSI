@@ -25,7 +25,10 @@
 <div><%= user.system %></div>
 <div>
     <a href="/profile/<%= user._id %>"><button>Edit</button></a>
-<button>Delete</button>
+
+    <form id="delete" action="/loggedin/<%= user._id %>?_method=DELETE" method="POST">
+        <button>Delete Profile</button>
+    </form>
 <div>
 
 

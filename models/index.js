@@ -11,6 +11,7 @@ const customerSchema = new mongoose.Schema({
     city: String,
     state: String,
     country: String,
+    zip: Number,
     firstname: String,
     lastname: String,
     title: String,
@@ -22,6 +23,8 @@ const customerSchema = new mongoose.Schema({
     created: {type: Date, default: Date.now},
 });
 
-const customerProfile = mongoose.model("customerProfile", customerSchema);
 
-module.exports = customerProfile;
+
+
+
+module.exports = mongoose.model("customerProfile", customerSchema);

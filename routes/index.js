@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const customerProfile = require("../models/index");
-const passport = require("passport");
+const User = require("../models/user");
 
 
 //RESTFUL ROUTES - Index/Home
@@ -42,66 +42,47 @@ router.get('/loggedin', function(req, res) {
 });
 
 
-//CREATE ROUTE - Register Route
+//CREATE ROUTE & LOGIN ROUTE
 
 router.post('/register', function(req, res) {
     customerProfile.create(req.body, function(err, user) {
         if(err) {
             console.log(err)
         } else {
-          res.render("loggedin", {
-               title: 'Profile',
-               user: {
-                   userid: user._id,
-                   companyname: user.companyname,
-                   address: user.address,
-                   city: user.city,
-                   state: user.state,
-                   zip: user.zip,
-                   country: user.country,
-                   firstname: user.firstname,
-                   lastname: user.lastname,
-                   title: user.title,
-                   phone: user.phone,
-                   email: user.email,
-                   website: user.website,
-                   system: user.system,
-                   created: user.created,
-               },
-          });
-        }
+            User.create(req.body, function(err, login) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.render("loggedin", {user: user, login: login});
+                }
+            });
+        };
     });
 });
+
+router.post('/downloads', function(req, res) {
+    User.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.redirect("/downloads");
+            console.log(err);
+        } else {
+            res.render("loggedin", {user});
+        };
+    });
+});
+
 
 // SHOW ROUTE
 
 router.get("/register/:id", function(req, res) {
-   customerProfile.findById(req.params.id, function(err, user){
-       if(err) {
-           res.redirect("../downloads");
-           console.log(err);
-       } else {
-           res.render("loggedin", {
-               title: 'Profile',
-               user: {
-                   companyname: user.companyname,
-                   address: user.address,
-                   city: user.city,
-                   state: user.state,
-                   zip: user.zip,
-                   country: user.country,
-                   firstname: user.firstname,
-                   lastname: user.lastname,
-                   title: user.title,
-                   phone: user.phone,
-                   email: user.email,
-                   website: user.website,
-                   system: user.system,
-                   created: user.created,
-               },
-           });
-       }
-   });
+    customerProfile.findById(req.params.id, function (err, user) {
+        if (err) {
+            res.redirect("../downloads");
+            console.log(err);
+        } else {
+            res.render("loggedin", {user});
+        };
+    });
 });
 
 //Login Logic - need to use logged in middleware to pull entire profile
@@ -121,31 +102,13 @@ router.get("/profile/:id", function(req, res) {
            res.redirect("../downloads");
            console.log(err);
        } else {
-           res.render("profile", {
-               title: 'Profile',
-               user: {
-                   companyname: user.companyname,
-                   address: user.address,
-                   city: user.city,
-                   state: user.state,
-                   zip: user.zip,
-                   country: user.country,
-                   firstname: user.firstname,
-                   lastname: user.lastname,
-                   title: user.title,
-                   phone: user.phone,
-                   email: user.email,
-                   website: user.website,
-                   system: user.system,
-                   created: user.created,
-               },
-           });
+           res.render("profile", {user});
        }
    });
 });
 
 router.put("/profile/:id", function(req, res) {
-   customerProfile.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
+   customerProfile.findByIdAndUpdate(req.params.id, req.body, function(err, updatedProfile) {
        if(err) {
            res.redirect("/profile/:id");
            console.log(err);
@@ -156,9 +119,29 @@ router.put("/profile/:id", function(req, res) {
 });
 
 
-
+router.get("/loggedin/:id", function(req, res) {
+    customerProfile.findById(req.params.id, function(err, user){
+        if(err) {
+            res.redirect("../downloads");
+            console.log(err);
+        } else {
+            res.render("loggedin", {user});
+        }
+    });
+});
 
 
 //DESTROY-DELETE ROUTE
+
+router.delete("/loggedin/:id", function(req, res) {
+    customerProfile.findByIdAndRemove(req.params.id, function(err){
+        if(err) {
+            res.redirect("loggedin");
+            console.log(err);
+        } else {
+            res.render("downloads");
+        }
+    });
+});
 
 module.exports = router;
