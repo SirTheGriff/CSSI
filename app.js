@@ -3,7 +3,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       app = express(),
       passport = require("passport"),
-      LocalStrategy = require("passport-local").Strategy,
+      LocalStrategy = require("passport-local"),
       User = require("./models/user"),
       methodOverride = require("method-override");
 
@@ -22,28 +22,27 @@ app.use(bodyParser.json());
 app.use('/', routes);
 
 
-app.use(passport.initialize());
-passport.use(new LocalStrategy(
-    function(username, password, done) {
-        User.findOne({username: username}, function (err, user) {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
-                return done(null, false, {message: 'Incorrect username'});
-            }
-            if (!user.validPassword(password)) {
-                return done(null, false, {message: 'Incorrect password'});
-            }
-            return done(null, user);
-        });
-       }
-    ));
 
-//app.use(function(req, res, next) {
-//     res.locals.User = req.user;
-//     next();
-// });
+
+app.use(require("express-session")({
+    secret: "cssi inc",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 app.listen(2424, function() {
     console.log("server is runnin");

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const customerProfile = require("../models/index");
 const User = require("../models/user");
+const midware = require('../middleware');
+const passport = require("passport");
 
 
 //RESTFUL ROUTES - Index/Home
@@ -46,30 +48,57 @@ router.get('/loggedin', function(req, res) {
 
 router.post('/register', function(req, res) {
     customerProfile.create(req.body, function(err, user) {
-        if(err) {
-            console.log(err)
+        if(err){
+            console.log(err);
+            res.redirect("register");
         } else {
-            User.create(req.body, function(err, login) {
+            let newUser = new User({username: req.body.username});
+            User.register(newUser, req.body.password, function(err, login) {
                 if(err) {
-                    console.log(err)
-                } else {
-                    res.render("loggedin", {user: user, login: login});
+                    console.log(err);
+                    return res.redirect("register");
                 }
+                passport.authenticate("local")(req, res, function(){
+                    res.render("loggedin", {user: user, login: login});
+                });
             });
-        };
+        }
     });
 });
 
-router.post('/downloads', function(req, res) {
-    User.findById(req.params.id, function (err, user) {
-        if (err) {
-            res.redirect("/downloads");
-            console.log(err);
-        } else {
-            res.render("loggedin", {user});
-        };
-    });
+router.post("/downloads", passport.authenticate("local", {
+    successRedirect: "/loggedin",
+    failureRedirect: "/"
+}), function(req, res) {
 });
+
+// router.post("/downloads", function(req, res) {
+//    User.findById(req.params.id).populate("customerProfile").exec(function (err, user) {
+//        if (err) {
+//            console.log(err);
+//            res.redirect("/downloads")
+//        } else {
+//            res.render("loggedin", {user})
+//        }
+//    });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // SHOW ROUTE
