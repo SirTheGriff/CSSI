@@ -40,6 +40,7 @@ router.get('/whitepapers', function(req, res) {
 });
 
 
+
 //CREATE ROUTE & LOGIN ROUTE
 
 router.post('/register', function(req, res) {
@@ -62,27 +63,23 @@ router.post('/register', function(req, res) {
     });
 });
 
-router.post('/downloads',
-    passport.authenticate('local'),
-    function(err, req, res) {
-        if(err) {
-            console.log(err)
-        }
-        res.redirect('/loggedin' + req.user.username);
-    });
-
-// router.post("/downloads", function(req, res) {
-//    User.findById(req.params.id).populate("customerProfile").exec(function (err, user) {
-//        if (err) {
-//            console.log(err);
-//            res.redirect("/downloads")
-//        } else {
-//            res.render("loggedin", {user})
-//        }
-//    });
+// router.post("/downloads", passport.authenticate("local", {
+//     successRedirect: "services",
+//     failureRedirect: "downloads"
+//     }), function(req, res) {
 // });
 
 
+router.post("/downloads", function(req, res) {
+    User.findById(req.params.id).populate("customerProfile").exec(function (err, user) {
+        if (err) {
+            console.log(err);
+            res.redirect("/downloads")
+        } else {
+            res.render("loggedin", {user})
+        }
+    });
+});
 
 
 
