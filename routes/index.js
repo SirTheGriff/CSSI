@@ -43,6 +43,9 @@ router.get('/loggedin', function(req, res) {
     res.render('loggedin');
 });
 
+router.get('/listusers', function(req, res) {
+    res.render('listusers');
+});
 
 //CREATE ROUTE & LOGIN ROUTE
 
@@ -66,11 +69,14 @@ router.post('/register', function(req, res) {
     });
 });
 
-router.post("/downloads", passport.authenticate("local", {
-    successRedirect: "/loggedin",
-    failureRedirect: "/"
-}), function(req, res) {
-});
+router.post('/downloads',
+    passport.authenticate('local'),
+    function(err, req, res) {
+        if(err) {
+            console.log(err)
+        }
+        res.redirect('/loggedin' + req.user.username);
+    });
 
 // router.post("/downloads", function(req, res) {
 //    User.findById(req.params.id).populate("customerProfile").exec(function (err, user) {
@@ -87,21 +93,7 @@ router.post("/downloads", passport.authenticate("local", {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// SHOW ROUTE
+// SHOW ROUTE - LIST ROUTE
 
 router.get("/register/:id", function(req, res) {
     customerProfile.findById(req.params.id, function (err, user) {
@@ -114,15 +106,14 @@ router.get("/register/:id", function(req, res) {
     });
 });
 
-//Login Logic - need to use logged in middleware to pull entire profile
-//
-// router.post("/downloads",
-//     passport.authenticate('local', { successRedirect: '/loggedin',
-//     failureRedirect: '/downloads'})
-// );
+router.get('/listusers', function (req, res) {
+    customerProfile.find({}).exec(function(err, users) {
+        if (err) throw err;
+        res.render('/listusers', {users});
+    });
+});
 
 
-// need to fix navbar routes when clicking out...sessions needed likely
 //EDIT-UPDATE ROUTE
 
 router.get("/profile/:id", function(req, res) {

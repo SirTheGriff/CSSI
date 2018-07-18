@@ -4,6 +4,7 @@ const express = require('express'),
       app = express(),
       passport = require("passport"),
       LocalStrategy = require("passport-local"),
+      passportLocalMongoose = require("passport-local-mongoose"),
       User = require("./models/user"),
       methodOverride = require("method-override");
 
@@ -18,9 +19,7 @@ app.use(express.static('public'));
 app.use(express.static('views'));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 app.use('/', routes);
-
 
 
 
