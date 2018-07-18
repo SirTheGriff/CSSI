@@ -39,13 +39,6 @@ router.get('/whitepapers', function(req, res) {
     res.render('whitepapers');
 });
 
-router.get('/loggedin', function(req, res) {
-    res.render('loggedin');
-});
-
-router.get('/listusers', function(req, res) {
-    res.render('listusers');
-});
 
 //CREATE ROUTE & LOGIN ROUTE
 
@@ -107,9 +100,9 @@ router.get("/register/:id", function(req, res) {
 });
 
 router.get('/listusers', function (req, res) {
-    customerProfile.find({}).exec(function(err, users) {
+    customerProfile.find({}, function(err, users) {
         if (err) throw err;
-        res.render('/listusers', {users});
+        res.render('listusers', {users});
     });
 });
 
