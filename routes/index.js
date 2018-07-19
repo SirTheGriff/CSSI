@@ -71,7 +71,7 @@ router.post('/register', function(req, res) {
 
 
 router.post("/downloads", function(req, res) {
-    User.findById(req.params.id).populate("customerProfile").exec(function (err, user) {
+    User.find({}).populate("customerProfile").exec(function (err, user) {
         if (err) {
             console.log(err);
             res.redirect("/downloads")
