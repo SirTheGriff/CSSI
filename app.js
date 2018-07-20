@@ -43,6 +43,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.listen(2424, function() {
-    console.log("server is runnin");
+app.listen(process.env.PORT, process.env.IP, function(){
+   console.log("YelpCamp Server Has Started"); 
 });
