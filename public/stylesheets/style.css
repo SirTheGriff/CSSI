@@ -30,7 +30,7 @@ header {
     margin: 30px;
 }
 
-
+/******  Body Styles  ************/
 
 iframe {
     display: block;
@@ -43,9 +43,35 @@ iframe {
     text-align: center;
 }
 
+.headingcenter {
+    text-align: center;
+}
+
 .container_content {
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.container_user {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.userdetails {
+    align-content: right;
+}
+
+.list {
+    flex-direction: column;
+}
+
+.userlist {
+    display: flex;
+}
+
+.details_button {
+    margin-left: 5px;
 }
 
 .all_forms,
@@ -83,6 +109,10 @@ Media Queries
         height: 90px;
     }
 
+    header {
+        font-size: .95em;
+    }
+
     iframe {
         width: 600px;
         height: 300px;
@@ -90,6 +120,7 @@ Media Queries
 
     .container_content {
         margin: 7%;
+        font-size: .9em;
     }
 
 }
@@ -122,6 +153,11 @@ Media Queries
 
     .container_content{
         margin: 5%;
+        font-size: .8em;
+    }
+
+    .container_user {
+        font-size: .9em;
     }
 
     iframe {

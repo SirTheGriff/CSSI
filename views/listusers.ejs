@@ -1,20 +1,39 @@
 <% include ./partials/header %>
 
 <div class="container_content">
-    <h2>All Current Users</h2>
-
+    <h2 class="headingcenter">All Current Users</h2>
 
 </div>
 
-<div class="heading">
 
+<div class="container_user">
+
+    <div class="list">
     <% users.forEach(function(user) { %>
-        <ol>
-            <h3> <%= user.firstname %> </h3>
+        <ol class="userlist">
+            <li> <%= user.firstname %> - <%= user.companyname %></li><span class="details_button"><button id="get_profile">Details</button></span>
         </ol>
     <% }); %>
+    </div>
 
-    <div>
+
+<div class="userdetails">
+        <div>First Name: </div>
+        <div>Last Name: </div>
+        <div>Company: </div>
+        <div>Job Title: </div>
+        <div>Address: </div>
+        <div>Zip: </div>
+        <div>City: </div>
+        <div>State: </div>
+        <div>Country: </div>
+        <div>Phone: </div>
+        <div>Email: </div>
+        <div>Website: </div>
+        <div>System Currently Using:</div>
+</div>
+
+</div>
 
 
 

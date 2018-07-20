@@ -5,9 +5,7 @@ const customerProfile = require("../models/index");
 const userSchema = new mongoose.Schema ({
     username: String,
     password: String,
-    customerProfile: [
-        { type: mongoose.Schema.Types.ObjectId, ref: 'customerProfile' }
-    ]
+    customerProfile: { type: mongoose.Schema.Types.ObjectId, ref: 'customerProfile' }
 });
 
 userSchema.plugin(passportLocalMongoose);

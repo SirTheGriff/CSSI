@@ -81,7 +81,18 @@ router.post("/downloads", function(req, res) {
     });
 });
 
-
+// router.post("/downloads", function(req, res) {
+//     User.findById(req.params.id, function (err, user) {
+//         customerProfile.findById(user.user, function(err, customer) {
+//             if (err) {
+//             console.log(err);
+//             res.redirect("/downloads")
+//         } else {
+//             res.render("loggedin", {customer})
+//         }
+//         });
+//     });
+// });
 
 // SHOW ROUTE - LIST ROUTE
 
