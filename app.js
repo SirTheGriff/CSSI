@@ -23,6 +23,7 @@ app.use('/', routes);
 
 
 
+
 app.use(require("express-session")({
     secret: "cssi inc",
     resave: false,
@@ -43,6 +44,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.listen(process.env.PORT, process.env.IP, function(){
-   console.log("YelpCamp Server Has Started"); 
+app.listen(2424, function() {
+    console.log("server is runnin");
 });

@@ -46,7 +46,7 @@ router.get('/whitepapers', function(req, res) {
 router.post('/register', function(req, res) {
     customerProfile.create(req.body, function(err, user) {
         if(err){
-            console.log(err);
+            alert(err);
             res.redirect("register");
         } else {
             let newUser = new User({username: req.body.username});
@@ -112,7 +112,11 @@ router.get('/listusers', function (req, res) {
         if (err) throw err;
         res.render('listusers', {users});
     });
+    
+
 });
+
+
 
 
 //EDIT-UPDATE ROUTE
