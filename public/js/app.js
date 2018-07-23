@@ -1,15 +1,33 @@
 document.querySelectorAll(".get_profile");
 
-$('.get_profile').on('click', function() {
-    var id = $(this).data('id');
+$('.get_profile').on('click', function(data) {
+    var id = data._id;
     $.ajax({
-        dataType: 'json',
-        method: "GET",
+        type: "POST",
+        dataType: "json",
         url: "/listusers",
-        data: data,
-    }).done(function(data) {
-        console.log(data)
-    })
+        success: function(result) {
+           $(".userdetails span").empty();
+           console.log(result);
+           $("#enterfname").html(result.firstname);
+           $("#enterlname").html(result.lastname);
+           $("#entercompany").html(result.company);
+           $("#entertitle").html(result.title);
+           $("#enteradd").html(result.address);
+           $("#enterzip").html(result.zip);
+           $("#entercity").html(result.city);
+           $("#enterstate").html(result.state);
+           $("#entercountry").html(result.country);
+           $("#enterphone").html(result.phone);
+           $("#enteremail").html(result.email);
+           $("#enterweb").html(result.web);
+           $("#entersys").html(result.system);
+        },
+        error: function(err) {
+           $("#userdetails span").html("<strong> Error </strong>");
+           console.log("ERROR: ", err);
+        }
+   });
 });
 
 
