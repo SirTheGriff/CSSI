@@ -116,15 +116,17 @@ router.get('/listusers', function (req, res) {
 });
 
 router.post("/listusers", function (req, res){
-    var id = "5b55e80b461c082d005af998";
-    customerProfile.findById(id, function (err, user) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(user)
-        };
-    })
-})
+
+    customerProfile.find(req.params.id, function(err, profile) {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(err);
+            }
+
+            res.json(profile[i]);
+
+    });
+});
 
 
 

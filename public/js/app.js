@@ -11,7 +11,7 @@ $('.get_profile').on('click', function(data) {
            console.log(result);
            $("#enterfname").html(result.firstname);
            $("#enterlname").html(result.lastname);
-           $("#entercompany").html(result.company);
+           $("#entercompany").html(result.companyname);
            $("#entertitle").html(result.title);
            $("#enteradd").html(result.address);
            $("#enterzip").html(result.zip);
