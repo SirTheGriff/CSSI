@@ -1,16 +1,15 @@
-document.querySelectorAll(".get_profile");
 
-$('.get_profile').on('click', function(data) {
-    var id = data._id;
+$('button').click(function() {
+        alert($(this).attr("data-id"));
+        var data = $(this).attr("data-id");
     $.ajax({
         type: "POST",
         dataType: "json",
         url: "/listusers",
         success: function(result) {
-           $(".userdetails span").empty();
-           console.log(result);
+           $(".details_button span").empty();
            $("#enterfname").html(result.firstname);
-           $("#enterlname").html(result.lastname);
+           $("#enterlname").html(result.lastnam5b55e80b461c082d005af998e);
            $("#entercompany").html(result.companyname);
            $("#entertitle").html(result.title);
            $("#enteradd").html(result.address);
@@ -22,12 +21,14 @@ $('.get_profile').on('click', function(data) {
            $("#enteremail").html(result.email);
            $("#enterweb").html(result.web);
            $("#entersys").html(result.system);
+           console.log(data);
         },
         error: function(err) {
            $("#userdetails span").html("<strong> Error </strong>");
            console.log("ERROR: ", err);
         }
-   });
+      });
+   
 });
 
 

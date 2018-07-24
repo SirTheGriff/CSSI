@@ -116,17 +116,18 @@ router.get('/listusers', function (req, res) {
 });
 
 router.post("/listusers", function (req, res){
-
-    customerProfile.find(req.params.id, function(err, profile) {
+    customerProfile.findOne({}, function(err, profile) {
             if (err) {
                 console.log(err);
                 return res.status(500).json(err);
             }
-
-            res.json(profile[i]);
-
+                res.json(profile);
+                
     });
 });
+
+
+
 
 
 
