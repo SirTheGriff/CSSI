@@ -1,27 +1,27 @@
 
 $('button').click(function() {
         alert($(this).attr("data-id"));
-        var data = $(this).attr("data-id");
     $.ajax({
         type: "POST",
         dataType: "json",
         url: "/listusers",
         success: function(result) {
-           $(".details_button span").empty();
-           $("#enterfname").html(result.firstname);
-           $("#enterlname").html(result.lastnam5b55e80b461c082d005af998e);
-           $("#entercompany").html(result.companyname);
-           $("#entertitle").html(result.title);
-           $("#enteradd").html(result.address);
-           $("#enterzip").html(result.zip);
-           $("#entercity").html(result.city);
-           $("#enterstate").html(result.state);
-           $("#entercountry").html(result.country);
-           $("#enterphone").html(result.phone);
-           $("#enteremail").html(result.email);
-           $("#enterweb").html(result.web);
-           $("#entersys").html(result.system);
-           console.log(data);
+
+            // $(".details_button span").empty();
+            $("#enterfname").html(result.firstname);
+            $("#enterlname").html(result.lastname);
+            $("#entercompany").html(result.companyname);
+            $("#entertitle").html(result.title);
+            $("#enteradd").html(result.address);
+            $("#enterzip").html(result.zip);
+            $("#entercity").html(result.city);
+            $("#enterstate").html(result.state);
+            $("#entercountry").html(result.country);
+            $("#enterphone").html(result.phone);
+            $("#enteremail").html(result.email);
+            $("#enterweb").html(result.web);
+            $("#entersys").html(result.system);
+            console.log(result);
         },
         error: function(err) {
            $("#userdetails span").html("<strong> Error </strong>");
