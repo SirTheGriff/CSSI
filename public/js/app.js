@@ -1,6 +1,6 @@
 
 $('.get_profile').click(function() {
-        alert($(this).attr("data-id"));
+
         var id = $(this).attr("data-id");
 
     $.ajax({
@@ -19,7 +19,7 @@ $('.get_profile').click(function() {
             $("#entercountry").html(user.country);
             $("#enterphone").html(user.phone);
             $("#enteremail").html(user.email);
-            $("#enterweb").html(user.web);
+            $("#enterweb").html(user.website);
             $("#entersys").html(user.system);
             console.log(user, err);
         },

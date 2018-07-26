@@ -5,9 +5,14 @@ will be an ongoing project as I add more pages and activate more links.
 
 Instructions:
 
-I am running Mongo locally - http://localhost:2424
+I am running Mongo locally.
+Server is hosted at: localhost:2424
 
 **CRUD**
+
+NOTE: Please see the "listusers" page for front end rendering. 
+
+
 
 _Create_
 
@@ -16,7 +21,7 @@ Click on Downloads in the header and the Register button. All fields are require
 _Read/List_ - (I advise to view this last, as "edit/delete" is easily accessible after registering.)
 
 Click on the User List link in the header. This will show all users in the database, showing only First Name and Company.
-Clicking the "details" button will show the rest of the profile to the right.
+Clicking the "details" button will show the rest of the profile to the right. This is the AJAX portion of the project.
 
 _Edit_
 
