@@ -109,28 +109,11 @@ router.get("/register/:id", function(req, res) {
 
 
 router.get('/listusers', function (req, res) {
-  customerProfile.find({}, function(err, users) {
+    customerProfile.find({}, function(err, users) {
         if (err) throw err;
         res.render('listusers', {users});
     });
 });
-
-router.post("/listusers", function (req, res){
-        var id = "";
-        customerProfile.findOne({}, function(err, profile) {
-            if (err) {
-                console.log(err);
-                return res.status(500).json(err);
-            }
-            res.json(profile);
-        });
-
-
-});
-
-
-
-
 
 
 

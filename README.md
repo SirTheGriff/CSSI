@@ -1,7 +1,7 @@
 **FSJS Project**
 
 This is a redo of my company's website, and
-will be ongoing as I add more pages and activate more links.
+will be an ongoing project as I add more pages and activate more links.
 
 Instructions:
 

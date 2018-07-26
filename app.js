@@ -8,7 +8,8 @@ const express = require('express'),
       User = require("./models/user"),
       methodOverride = require("method-override");
 
-const routes = require('./routes');
+const routes = require('./routes'),
+      api = require('./routes/api');
 
 
 //APP CONFIGURATION
@@ -20,6 +21,7 @@ app.use(express.static('views'));
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', routes);
+app.use('/api', api);
 
 
 

@@ -4,28 +4,24 @@ $('.get_profile').click(function() {
         var id = $(this).attr("data-id");
 
     $.ajax({
-        type: "POST",
-        traditional: true,
-        dataType: "json",
-        context: id,
-        data: id,
-        url: "/listusers",
-        success: function(id) {
+        type: "GET",
+        url: "/api/listusers/" + id,
+        success: function(user, err) {
 
-            $("#enterfname").html(id.firstname);
-            $("#enterlname").html(id.lastname);
-            $("#entercompany").html(id.companyname);
-            $("#entertitle").html(id.title);
-            $("#enteradd").html(id.address);
-            $("#enterzip").html(id.zip);
-            $("#entercity").html(id.city);
-            $("#enterstate").html(id.state);
-            $("#entercountry").html(id.country);
-            $("#enterphone").html(id.phone);
-            $("#enteremail").html(id.email);
-            $("#enterweb").html(id.web);
-            $("#entersys").html(id.system);
-            console.log(id);
+            $("#enterfname").html(user.firstname);
+            $("#enterlname").html(user.lastname);
+            $("#entercompany").html(user.companyname);
+            $("#entertitle").html(user.title);
+            $("#enteradd").html(user.address);
+            $("#enterzip").html(user.zip);
+            $("#entercity").html(user.city);
+            $("#enterstate").html(user.state);
+            $("#entercountry").html(user.country);
+            $("#enterphone").html(user.phone);
+            $("#enteremail").html(user.email);
+            $("#enterweb").html(user.web);
+            $("#entersys").html(user.system);
+            console.log(user, err);
         },
         error: function(err) {
            $("#userdetails span").html("<strong> Error </strong>");
