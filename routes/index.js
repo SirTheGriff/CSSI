@@ -116,8 +116,8 @@ router.get('/listusers', function (req, res) {
 });
 
 router.post("/listusers", function (req, res){
-        var id = req.params;
-        customerProfile.findOne(id, function(err, profile) {
+        var id = "";
+        customerProfile.findOne({}, function(err, profile) {
             if (err) {
                 console.log(err);
                 return res.status(500).json(err);

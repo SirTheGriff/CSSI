@@ -1,24 +1,17 @@
 
 $('.get_profile').click(function() {
         alert($(this).attr("data-id"));
-<<<<<<< HEAD
-        const id = $(this).attr("data-id");
-=======
         var id = $(this).attr("data-id");
->>>>>>> 241f19208e82855421f384e37fc53e1c3f5d7eb0
+
     $.ajax({
         type: "POST",
         traditional: true,
         dataType: "json",
-<<<<<<< HEAD
-=======
         context: id,
->>>>>>> 241f19208e82855421f384e37fc53e1c3f5d7eb0
         data: id,
         url: "/listusers",
         success: function(id) {
 
-            // $(".details_button span").empty();
             $("#enterfname").html(id.firstname);
             $("#enterlname").html(id.lastname);
             $("#entercompany").html(id.companyname);
