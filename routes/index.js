@@ -179,7 +179,7 @@ router.delete("/loggedin/:id", function(req, res) {
             res.redirect("loggedin");
             console.log(err);
         } else {
-            res.render("downloads");
+            res.redirect("downloads");
         }
     });
 });
