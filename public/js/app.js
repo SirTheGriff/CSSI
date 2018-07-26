@@ -1,9 +1,11 @@
 
-$('button').click(function() {
+$('.get_profile').click(function() {
         alert($(this).attr("data-id"));
+        const id = $(this).attr("data-id");
     $.ajax({
         type: "POST",
         dataType: "json",
+        data: id,
         url: "/listusers",
         success: function(result) {
 
