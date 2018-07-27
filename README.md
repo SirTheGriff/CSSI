@@ -1,4 +1,4 @@
-##FSJS Project
+## FSJS Project
 
 This is a redo of my company's website, and
 will be an ongoing project as I add more pages and activate more links.
@@ -22,30 +22,30 @@ NPM Packages:
 * passport-local
 * passport-local-mongoose
 
-##CRUD
+### CRUD
 
 _NOTE:_ Please see the "listusers" page for front end rendering and the Read/List piece of CRUD. The AJAX call is on this page only.
 The rest of the side is rendered pages via routes. I advise to view this last, as the Edit/Delete pieces are best seen right after registering/submitting the form.
 
 
-##Create
+### Create
 
 Click on the Downloads link in the header and then the Register button below the login box. It will send you to a register form. All fields are required and will create a profile.
 
-##Read/List
+### Read/List
 
 (I advise to view this part last, as the "edit/delete" parts are easily accessible after registering.)
 
 Click on the User List link in the header. This will show all users in the database, showing only First Name and Company.
 Clicking the "details" button will show the rest of the profile to the right. This is the AJAX portion of the project.
 
-##Edit
+### Edit
 
 Once a profile is created and submitted, a profile page will show the recently entered contents. From here the user is able to edit or delete it.
 I am working on sessions and authentication so that one can come back to this page if clicked elsewhere.
 Right now you have to put the id in the url after /profile or /loggedin to edit/delete the profile if navigated elsewhere.
 
-##Delete
+### Delete
 
 Similar to Edit above, once a profile is created there is the option to delete the profile completely.
 This route will be better served via sessions/authentication, as right now you can only access by pasting the id in the url after /loggedin.
