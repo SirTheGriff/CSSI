@@ -27,6 +27,8 @@ NPM Packages:
 _NOTE:_ Please see the "listusers" page for front end rendering and the Read/List piece of CRUD. The AJAX call is on this page only.
 The rest of the site is rendered pages via routes. I advise to view the User List link last, as the Edit/Delete pieces are best seen right after registering/submitting the form.
 
+Also, I don't have data pre-loaded in the database. You'll need to create one or more fake profiles to see the User List page features (shows all users).
+
 
 ### Create
 
@@ -54,6 +56,7 @@ This route will be better served via sessions/authentication, as right now you c
 
 ****Future Additions:****
 * user authentication and middleware - login from downloads page
+* link both "customerProfile" and "User" schemas to one ID
 * overall styling
 * downloadable PDF's in whitepapers page
 * contact us page post route
