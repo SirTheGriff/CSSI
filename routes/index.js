@@ -96,16 +96,6 @@ router.post("/downloads", function(req, res) {
 
 // SHOW ROUTE - LIST ROUTE
 
-router.get("/register/:id", function(req, res) {
-    customerProfile.findById(req.params.id, function (err, user) {
-        if (err) {
-            res.redirect("../downloads");
-            console.log(err);
-        } else {
-            res.render("loggedin", {user});
-        };
-    });
-});
 
 
 router.get('/listusers', function (req, res) {
@@ -117,7 +107,7 @@ router.get('/listusers', function (req, res) {
 
 
 
-//EDIT-UPDATE ROUTE
+//EDIT-UPDATE ROUTES
 
 router.get("/profile/:id", function(req, res) {
    customerProfile.findById(req.params.id, function(err, user){
