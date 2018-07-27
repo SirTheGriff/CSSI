@@ -25,7 +25,7 @@ NPM Packages:
 ### CRUD
 
 _NOTE:_ Please see the "listusers" page for front end rendering and the Read/List piece of CRUD. The AJAX call is on this page only.
-The rest of the side is rendered pages via routes. I advise to view this last, as the Edit/Delete pieces are best seen right after registering/submitting the form.
+The rest of the site is rendered pages via routes. I advise to view the User List link last, as the Edit/Delete pieces are best seen right after registering/submitting the form.
 
 
 ### Create
@@ -43,7 +43,7 @@ Clicking the "details" button will show the rest of the profile to the right. Th
 
 Once a profile is created and submitted, a profile page will show the recently entered contents. From here the user is able to edit or delete it.
 I am working on sessions and authentication so that one can come back to this page if clicked elsewhere.
-Right now you have to put the id in the url after /profile or /loggedin to edit/delete the profile if navigated elsewhere.
+Right now you have to put the id in the url after /profile or /loggedin to edit/delete the profile if you click on another page.
 
 ### Delete
 
@@ -57,7 +57,7 @@ This route will be better served via sessions/authentication, as right now you c
 * overall styling
 * downloadable PDF's in whitepapers page
 * contact us page post route
-* better user experience (ex. a warning before deleting profile)
+* better user experience (ex. a warning before deleting the profile)
 
 
 
