@@ -8,7 +8,7 @@ Instructions:
 * I am running Mongo on my local machine.
 * Server is hosted at: localhost:2424
 * npm install
-* node app.js
+* run application = node app.js
 
 NPM Packages:
 * body-parser
